@@ -45,9 +45,6 @@ Notes
 const area = document.getElementById("myCanvas");
 const player = document.createElement("div")
 const cars = document.createElement("div");
-let startButton = document.getElementById("startButton");
-let menuButton = document.getElementById("menuButton");
-let restartButton = document.getElementById("restartButton");
 
 let is_punching = false
 let on_car = false 
@@ -146,8 +143,35 @@ function main() {
 }
 
 
+
+let startButton = document.getElementById("startButton"); // visible while in main menu, hidden otherwise
+let menuButton = document.getElementById("menuButton"); // visible while in game over screen, hidden otherwise
+let restartButton = document.getElementById("restartButton"); // visible while in game over screen, hidden otherwise
+let scoreDisplay = document.getElementById("scoreDisplay"); // visible while game is running or in game over screen, hidden otherwise
+let highscoreDisplay = document.getElementById("highscoreDisplay"); // visible while in main menu or game over screen, hidden otherwise
+let gameOverText = document.getElementById("gameOverText"); // visible while in game over screen, hidden otherwise
+
+let score = 0;
+let highScore = 0;
+let timeID;
+
+/*
+timeID = window.setInterval(keepScore, 1000);
+
+function keepScore() {
+  score++;
+  scoreDisplay.textContent = `Score: ${score}`;
+
+  if (score > highScore) {
+    highScore = score;
+  }
+}
+*/
+
+scoreDisplay.style.visibility = "hidden";
 menuButton.style.visibility = "hidden";
 restartButton.style.visibility = "hidden";
+gameOverText.style.visibility = "hidden";
 
 startButton.addEventListener("click", startGame);
 
@@ -159,13 +183,22 @@ function lose() {
 function startGame() {
   main();
   startButton.style.visibility = "hidden";
+  highscoreDisplay.style.visibility = "hidden";
+  scoreDisplay.style.visibility = "visible";
   menuButton.style.visibility = "visible";
   restartButton.style.visibility = "visible";
+  gameOverText.style.visibility = "visible";
 }
 
 function returnToMenu() {
   alert("returning to menu");
+
+  highscoreDisplay.textContent = `High Score: ${highScore}`
+
   startButton.style.visibility = "visible";
+  highscoreDisplay.style.visibility = "visible";
+  scoreDisplay.style.visibility = "hidden";
   menuButton.style.visibility = "hidden";
   restartButton.style.visibility = "hidden";
+  gameOverText.style.visibility = "hidden";
 }
