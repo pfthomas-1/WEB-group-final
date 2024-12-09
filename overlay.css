@@ -1,4 +1,4 @@
 .overlay {
-    background-image: url("car_overlay.png");
-    background-size: auto;
+    background-image: url("/graphics/car_overlay.png");
+    background-size: cover;
 }

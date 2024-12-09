@@ -5,6 +5,6 @@
     display: inline-block;
     width: 200px;
     height: 200px;
-    bottom: 0px;
+    bottom: 90px;
     animation: 2s linear move;
 }

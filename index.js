@@ -101,10 +101,12 @@ function slide() {
 function collisions() {
   let playerHitbox = player.getBoundingClientRect()
   let carsHitbox = cars.getBoundingClientRect()
+  console.log(playerHitbox.bottom, carsHitbox.top)
   if (is_punching && playerHitbox.right < carsHitbox.left && (playerHitbox.right + 20) > carsHitbox.left) {
       cars.classList.value = ""
   
-  } if (Math.round(playerHitbox.bottom) == Math.round(carsHitbox.top) && (playerHitbox.right > Math.round(carsHitbox.left))){   
+  } if (Math.round(playerHitbox.bottom) < Math.round(carsHitbox.top)){   
+      console.log("hello")
       is_jumping = false
       on_car = true
       player.style.bottom = `500px`; // thank you ChatGPT
@@ -113,9 +115,10 @@ function collisions() {
       // if the player's bottom is under the car's top  and  if the car's left side position is in between the player's left and right sides; did it this way because otherwise when the car passed under the player it would still trigger this
       alert("you lose")
   
-  // } if (on_car && playerHitbox.y > carsHitbox.right) {
-  //     on_car = false
-  //     player.style.bottom = "0px";
+  } if (on_car && playerHitbox.y < carsHitbox.right) {
+      console.log("bye")
+      on_car = false
+      player.style.bottom = "0px";
   } 
 }
 
@@ -124,7 +127,7 @@ function main() {
   area.appendChild(player);
   player.classList.add("player");
   area.appendChild(cars);
-  setInterval(collisions, .5);
+  setInterval(collisions, 1);
   setInterval(generateCar, 3000);
 
   // handles all keybinds
@@ -147,8 +150,11 @@ menuButton.style.visibility = "hidden";
 restartButton.style.visibility = "hidden";
 
 startButton.addEventListener("click", startGame);
-menuButton.addEventListener("click", returnToMenu);
-restartButton.addEventListener("click", startGame);
+
+function lose() {
+  menuButton.addEventListener("click", returnToMenu);
+  restartButton.addEventListener("click", startGame);
+}
 
 function startGame() {
   main();
