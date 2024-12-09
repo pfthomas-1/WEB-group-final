@@ -38,3 +38,12 @@
     50% {background-color: blue; right: 600px;}
     100% {background-color: black; right: 700px;}
 }
+
+@keyframes highway{
+    0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-534px, 0, 0); /* The image width */
+      }
+}
