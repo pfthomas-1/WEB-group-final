@@ -5,12 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="index.js" defer></script>
+    <style>
+        .custom-hr {
+            border: none;
+            height: 2px;
+            background: black;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body style="background-color: aliceblue;">
-    <div id="game" style="text-align: center;">
-        <h1>Hand of the Highway</h1>
-        <p>"The opportunity to secure ourselves against defeat lies in our own hands, but the opportunity of defeating the enemy is provided by the enemy himself."</p>
-        <canvas id="myCanvas" width="918" height="612" style="border:1px solid #000000;"></canvas>
+    <div id="dinoGame">
+        <div id="title" style="text-align: center;">
+            <h1>Hand of the Highway</h1>
+            <p>"The opportunity to secure ourselves against defeat lies in our own hands, but the opportunity of defeating the enemy is provided by the enemy himself."</p>
+
+            <hr class="custom-hr">
+        </div>
+
+        <div id="gameWindow" style="text-align: center;">
+            <canvas id="myCanvas" width="918" height="612" style="border:1px solid #000000;"></canvas>
+        </div>
+
+        <div id="startMenuButtons" style="text-align: center; transform: translate(0px, -360px);">
+            <img id="startButton" src="graphics/start_button.png" alt="start button" width="150px">
+        </div>
+
+        <div id="gameOverButtons" style="text-align: center; transform: translate(0px, -360px);">
+            <img id="restartButton" src="graphics/restart_button.png" alt="restart button" width="150px" style="transform: translate(-100px);">
+            <img id="menuButton" src="graphics/menu_button.png" alt="menu button" width="150px" style="transform: translate(100px);">
+        </div>
+
+        <div id="credits" style="text-align: center;">
+            <hr class="custom-hr">
+            <p>By: Philip, Tyler, Nuno</p>
+        </div>
     </div>
 </body>
 </html>

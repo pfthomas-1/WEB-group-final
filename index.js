@@ -42,3 +42,28 @@ Functions
 Notes
  - [1]: obstacle speed is randomly generate from a range that increases slowly up to a maximum speed as the game continues
 */
+
+let startButton = document.getElementById("startButton");
+let menuButton = document.getElementById("menuButton");
+let restartButton = document.getElementById("restartButton");
+
+menuButton.style.visibility = "hidden";
+restartButton.style.visibility = "hidden";
+
+startButton.addEventListener("click", startGame);
+menuButton.addEventListener("click", returnToMenu);
+restartButton.addEventListener("click", startGame);
+
+function startGame() {
+  alert("starting game");
+  startButton.style.visibility = "hidden";
+  menuButton.style.visibility = "visible";
+  restartButton.style.visibility = "visible";
+}
+
+function returnToMenu() {
+  alert("returning to menu");
+  startButton.style.visibility = "visible";
+  menuButton.style.visibility = "hidden";
+  restartButton.style.visibility = "hidden";
+}
