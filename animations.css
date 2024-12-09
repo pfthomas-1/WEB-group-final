@@ -5,8 +5,8 @@
 
 @keyframes jump {
     0% {bottom: 0px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
-    50% {bottom: 300px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
-    75% {bottom: 150px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
+    10% {bottom: 300px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
+    50% {bottom: 150px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
     100% {bottom: 0px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
 }
 
@@ -22,6 +22,7 @@
     72% {background-image:url("graphics/run frames/run9.png"); background-size: cover;} /*frame 9*/
     81% {background-image:url("graphics/run frames/run10.png"); background-size: cover;} /*frame 10*/
     90% {background-image:url("graphics/run frames/run11.png"); background-size: cover;} /*frame 11*/
+    100% {background-image:url("graphics/run frames/run11.png"); background-size: cover;}
 }
 
 @keyframes slide {
@@ -39,12 +40,20 @@
 @keyframes punch {
     0% {right: 50%;
         width: 300px;
-        height: 200px;}
-    50% {right: 60%;
+        height: 200px;
+        background-image:url("graphics/other hand frames/punch.png");
+        background-size:contain;
+        background-repeat: no-repeat;}
+    15% {right: 40%;
         width: 300px;
         height: 200px;
-        background-image:url("graphics/other hand frames/punch.png"); background-size: cover;}
+        background-image:url("graphics/other hand frames/punch.png");
+        background-size:contain;
+        background-repeat: no-repeat;}
     100% {right: 50%;
         width: 300px;
-        height: 200px;}
+        height: 200px;
+        background-image:url("graphics/other hand frames/punch.png");
+        background-size:contain;
+        background-repeat: no-repeat;}
 }
