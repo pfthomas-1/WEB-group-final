@@ -1,0 +1,49 @@
+@keyframes move {
+    0% {right: 0%;}
+    100% {right: 100%;}
+}
+
+@keyframes jump {
+    0% {bottom: 0px; background-image: url("graphics/other hand frames/jump.png")}
+    50% {bottom: 300px;}
+    100% {bottom: 0px;}
+}
+
+@keyframes sprint {
+    0% {background-image:url("graphics/run frames/run1.png")} /*frame 1*/
+    9% {background-image:url("graphics/run frames/run2.png")} /*frame 2*/
+    18% {background-image:url("graphics/run frames/run3.png")} /*frame 3*/
+    27% {background-image:url("graphics/run frames/run4.png")} /*frame 4*/
+    36% {background-image:url("graphics/run frames/run5.png")} /*frame 5*/
+    45% {background-image:url("graphics/run frames/run6.png")} /*frame 6*/
+    54% {background-image:url("graphics/run frames/run7.png")} /*frame 7*/
+    63% {background-image:url("graphics/run frames/run8.png")} /*frame 8*/
+    72% {background-image:url("graphics/run frames/run9.png")} /*frame 9*/
+    81% {background-image:url("graphics/run frames/run10.png")} /*frame 10*/
+    90% {background-image:url("graphics/run frames/run11.png")} /*frame 11*/
+}
+
+@keyframes slide {
+    0% {width: 100px;
+        height: 200px; background-image: url("graphics/other hand frames/crouch.png");}
+    50% {width: 200px;
+        height: 100px;}
+    100% {width: 100px;
+        height: 200px;}
+}
+
+@keyframes punch {
+    0% {background-color: black; right: 700px;
+        background-image:url("graphics/other hand frames/punch.png")}
+    50% {background-color: blue; right: 600px;}
+    100% {background-color: black; right: 700px;}
+}
+
+@keyframes highway{
+    0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-534px, 0, 0); /* The image width */
+      }
+}

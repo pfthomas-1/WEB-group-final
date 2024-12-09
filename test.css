@@ -1,0 +1,12 @@
+.car {
+    background-image: url("graphics/truck.png");
+    background-size: cover;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    bottom: 0px;
+    animation: 2s linear move;
+    background-image: url('OIP.jfif');
+    background-size: cover;
+}

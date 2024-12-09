@@ -1,0 +1,10 @@
+.car2 {
+    background-image: url("graphics/car.png");
+    background-size: cover;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 0px;
+    animation: 2s linear move;
+}
