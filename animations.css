@@ -1,0 +1,31 @@
+@keyframes move {
+    0% {right: 0%;}
+    100% {right: 100%;}
+}
+
+@keyframes jump {
+    0% {bottom: 0px;}
+    50% {bottom: 300px;}
+    100% {bottom: 0px;}
+}
+
+@keyframes sprint {
+    0% {background-color: black;}
+    50% {background-color: red;}
+    100% {background-color: black;}
+}
+
+@keyframes slide {
+    0% {width: 100px;
+        height: 200px;}
+    50% {width: 200px;
+        height: 100px;}
+    100% {width: 100px;
+        height: 200px;}
+}
+
+@keyframes punch {
+    0% {background-color: black; right: 700px;}
+    50% {background-color: blue; right: 600px;}
+    100% {background-color: black; right: 700px;}
+}

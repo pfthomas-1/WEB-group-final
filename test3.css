@@ -1,0 +1,10 @@
+.player {
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 100px;
+    height: 200px;
+    bottom: 0px;
+    right: 700px;
+    animation: .5s infinite sprint;
+}

@@ -1,0 +1,9 @@
+.car2 {
+    background-color: red;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 0px;
+    animation: 2s linear move;
+}
