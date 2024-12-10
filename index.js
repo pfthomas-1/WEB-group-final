@@ -68,6 +68,10 @@ menuButton.style.visibility = "hidden";
 restartButton.style.visibility = "hidden";
 gameOverText.style.visibility = "hidden";
 
+startButton.addEventListener("click", startGame);
+menuButton.addEventListener("click", returnToMenu);
+restartButton.addEventListener("click", startGame);
+
 function generateCar () {
   if (counter % 2 == 0) {
       cars.classList.add('car');
@@ -134,7 +138,7 @@ function collisions() {
   
   } else if (!on_car && playerHitbox.bottom > carsHitbox.top && (playerHitbox.right > Math.round(carsHitbox.left) && Math.round(carsHitbox.left) > playerHitbox.left)) {
       // if the player's bottom is under the car's top  and  if the car's left side position is in between the player's left and right sides; did it this way because otherwise when the car passed under the player it would still trigger this
-      alert("you lose");
+      console.log("you lose");
       lose();
   
   } if (on_car && playerHitbox.y < carsHitbox.right) {
@@ -148,10 +152,6 @@ function keepScore() {
   score++;
   scoreDisplay.textContent = `Score: ${score}`;
 }
-
-startButton.addEventListener("click", startGame);
-menuButton.addEventListener("click", returnToMenu);
-restartButton.addEventListener("click", startGame);
 
 function lose() {
   if (score > highScore) {
@@ -201,7 +201,7 @@ function startGame() {
 }
 
 function returnToMenu() {
-  alert("returning to menu");
+  console.log("returning to menu");
 
   startButton.style.visibility = "visible";
   menuButton.style.visibility = "hidden";
