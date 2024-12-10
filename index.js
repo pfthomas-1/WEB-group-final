@@ -121,7 +121,7 @@ function jump() {
 function slide() {
   player.style.animation = ".5s ease-out slide"
   player.onanimationend = function() {
-      player.style.animation = ".3s infinite sprint"
+      player.style.animation = ".5s infinite sprint"
   }
 }
 
@@ -137,12 +137,12 @@ function collisions() {
       console.log("hello")
       is_jumping = false
       on_car = true
-      player.style.bottom = `700px`; // thank you ChatGPT
-  
-  } else {
-    // console.log("bye")
-    on_car = false
-    player.style.bottom = "90px";
+      player.style.bottom = `${parseInt(Math.round(carsHitbox.top)) - 20}px`; // thank you ChatGPT
+      
+    } else {
+      // console.log("bye")
+      on_car = false
+      player.style.bottom = "90px";
 
   } if (!on_car && playerHitbox.bottom > carsHitbox.top && playerHitbox.right > carsHitbox.left && playerHitbox.left < carsHitbox.left) { //&& playerHitbox.right < carsHitbox.right) {
       // if the player's bottom is under the car's top  and  if the car's left side position is in between the player's left and right sides; did it this way because otherwise when the car passed under the player it would still trigger this
