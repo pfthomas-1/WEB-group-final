@@ -5,10 +5,11 @@
 
 @keyframes jump {
     0% {bottom: 90px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
-    10% {bottom: 400px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
-    50% {bottom: 200px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
-    70% {bottom: 170px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
+    10% {bottom: 370px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
+    50% {bottom: 380px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
+    90% {bottom: 200px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
     100% {bottom: 90px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
+
 }
 
 @keyframes sprint {
