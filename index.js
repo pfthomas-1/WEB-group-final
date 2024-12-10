@@ -55,7 +55,7 @@ let gameOverText = document.getElementById("gameOverText"); // visible while in 
 
 let score = 0;
 let highScore = 0;
-let timeID;
+let scoreTimer;
 let carGenTimer;
 let collisionTimer;
 
@@ -151,8 +151,11 @@ function main() {
   area.appendChild(player);
   player.classList.add("player");
   area.appendChild(cars);
-  collisionTimer = setInterval(collisions, 1);
-  carGenTimer = setInterval(generateCar, 3000);
+  collisionTimer = setInterval(collisions, 1); // check for collisions every millisecond
+  carGenTimer = setInterval(generateCar, 3000); // generate a car every 3 seconds
+  scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every second
+
+  score = 0;
 
   // handles all keybinds
   document.addEventListener("keydown", function(event) {
@@ -169,30 +172,26 @@ function main() {
   })
 }
 
-
-
-
-
-/*
-timeID = window.setInterval(keepScore, 1000);
-
 function keepScore() {
   score++;
   scoreDisplay.textContent = `Score: ${score}`;
-
-  if (score > highScore) {
-    highScore = score;
-  }
 }
-*/
 
 startButton.addEventListener("click", startGame);
 menuButton.addEventListener("click", returnToMenu);
 restartButton.addEventListener("click", startGame);
 
 function lose() {
+  if (score > highScore) {
+    highScore = score;
+  }
+
+  highscoreDisplay.textContent = `High Score: ${highScore}`;
+
+  clearInterval(scoreTimer);
   clearInterval(carGenTimer);
   clearInterval(collisionTimer);
+
   menuButton.style.visibility = "visible";
   restartButton.style.visibility = "visible";
   gameOverText.style.visibility = "visible";
@@ -200,19 +199,17 @@ function lose() {
 }
 
 function startGame() {
-  main();
   startButton.style.visibility = "hidden";
   highscoreDisplay.style.visibility = "hidden";
   scoreDisplay.style.visibility = "visible";
   menuButton.style.visibility = "hidden";
   restartButton.style.visibility = "hidden";
   gameOverText.style.visibility = "hidden";
+  main();
 }
 
 function returnToMenu() {
   alert("returning to menu");
-
-  highscoreDisplay.textContent = `High Score: ${highScore}`
 
   startButton.style.visibility = "visible";
   highscoreDisplay.style.visibility = "visible";
