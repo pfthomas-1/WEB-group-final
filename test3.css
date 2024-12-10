@@ -6,4 +6,5 @@
     bottom: 90px;
     right: 67%;
     animation: .5s infinite sprint;
+    z-index: 2;
 }

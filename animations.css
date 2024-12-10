@@ -1,5 +1,6 @@
 @keyframes move {
-    0% {right: 0%;}
+    0% {right: -100%; visibility: hidden;}
+    20% {right: 0%; visibility: visible;}
     100% {right: 100%;}
 }
 
@@ -28,15 +29,24 @@
 }
 
 @keyframes slide {
-    0% {width: 100px;
-        height: 200px; 
-        background-image: url("graphics/other hand frames/crouch.png"); background-size: cover;}
-    50% {width: 200px;
+    0% {height: 50px;
+        background-image:url("graphics/other hand frames/crouch.png");
+        background-size:contain;
+        background-repeat: no-repeat;}
+    /* 50% {width: 200px;
         height: 100px;
-        background-image: url("graphics/other hand frames/crouch.png"); background-size: cover;}
-    100% {width: 100px;
-        height: 200px;
-        background-image: url("graphics/other hand frames/crouch.png"); background-size: cover;}
+        background-image:url("graphics/other hand frames/punch.png");
+        background-size:contain;
+        background-repeat: no-repeat;} */
+    99% {height: 50px;
+        background-image:url("graphics/other hand frames/crouch.png");
+        background-size:contain;
+        background-repeat: no-repeat;}
+    100% {
+        height: 100px;
+        background-image:url("graphics/other hand frames/crouch.png");
+        background-size:contain;
+        background-repeat: no-repeat;}
 }
 
 @keyframes punch {

@@ -7,4 +7,5 @@
     height: 100px;
     bottom: 90px;
     animation: 2s linear move;
+    z-index: -1;
 }

@@ -1,6 +1,4 @@
-.overlay {
-    position: relative;
+.highway {
     background-image: url("/graphics/highway.png");
     background-size: cover;
-    z-index: 0;
 }
