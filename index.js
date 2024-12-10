@@ -88,10 +88,13 @@ function generateCar () {
 
 
 function punch() {
+  
   is_punching = false
   if (can_punch){
     is_punching = true
     player.style.animation = ".5s linear punch"
+    let punch_sound = new Audio("sounds/punch.mp3");
+    punch_sound.play()
     can_punch = false
     setInterval(resetPunch, 5000)
     player.onanimationend = function() {
@@ -154,6 +157,8 @@ function keepScore() {
 }
 
 function lose() {
+  document.getElementById("background_music").pause()
+
   if (score > highScore) {
     highScore = score;
   }
@@ -175,7 +180,7 @@ function startGame() {
   restartButton.style.visibility = "hidden";
   gameOverText.style.visibility = "hidden";
   score = 0;
-
+  document.getElementById("background_music").play()
   scoreDisplay.textContent = `Score: ${score}`;
   
   area.appendChild(player);
@@ -183,7 +188,7 @@ function startGame() {
   area.appendChild(cars);
   collisionTimer = setInterval(collisions, 1); // check for collisions every millisecond
   carGenTimer = setInterval(generateCar, 3000); // generate a car every 3 seconds
-  scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every second
+  scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every se0cond
 
   // handles all keybinds
   document.addEventListener("keydown", function(event) {
