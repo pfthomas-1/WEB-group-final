@@ -158,7 +158,7 @@ function keepScore() {
 
 function lose() {
   document.getElementById("background_music").pause()
-
+  player.style.animation = "1s linear death"
   if (score > highScore) {
     highScore = score;
   }

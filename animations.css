@@ -68,3 +68,18 @@
         background-size:contain;
         background-repeat: no-repeat;}
 }
+
+@keyframes death{
+    0% {left: 0%;
+        width: 300px;
+        height: 200px;
+        background-image:url("graphics/other hand frames/hurt.png");
+        background-size:contain;
+        background-repeat: no-repeat;}
+    100% {left: -200%;
+        width: 300px;
+        height: 200px;
+        background-image:url("graphics/other hand frames/hurt.png");
+        background-size:contain;
+        background-repeat: no-repeat;}
+}
