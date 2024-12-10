@@ -49,8 +49,7 @@ const cars = document.createElement("div");
 let startButton = document.getElementById("startButton"); // visible while in main menu, hidden otherwise
 let menuButton = document.getElementById("menuButton"); // visible while in game over screen, hidden otherwise
 let restartButton = document.getElementById("restartButton"); // visible while in game over screen, hidden otherwise
-let scoreDisplay = document.getElementById("scoreDisplay"); // visible while game is running or in game over screen, hidden otherwise
-let highscoreDisplay = document.getElementById("highscoreDisplay"); // visible while in main menu or game over screen, hidden otherwise
+let scoreDisplay = document.getElementById("scoreDisplay"); // always visible
 let gameOverText = document.getElementById("gameOverText"); // visible while in game over screen, hidden otherwise
 
 let score = 0;
@@ -65,7 +64,6 @@ let is_jumping = false
 let counter = 0
 let can_punch = true
 
-scoreDisplay.style.visibility = "hidden";
 menuButton.style.visibility = "hidden";
 restartButton.style.visibility = "hidden";
 gameOverText.style.visibility = "hidden";
@@ -146,32 +144,6 @@ function collisions() {
   } 
 }
 
-
-function main() {
-  area.appendChild(player);
-  player.classList.add("player");
-  area.appendChild(cars);
-  collisionTimer = setInterval(collisions, 1); // check for collisions every millisecond
-  carGenTimer = setInterval(generateCar, 3000); // generate a car every 3 seconds
-  scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every second
-
-  score = 0;
-
-  // handles all keybinds
-  document.addEventListener("keydown", function(event) {
-      if (event.key == "ArrowUp") {
-          jump()
-      // fast fall code check if the down arrow is being clicked while the player is jumping
-      } if (event.key == "ArrowDown" && is_jumping) {
-          player.style.animationDuration = ".4s"
-      } if (event.key == "ArrowDown" && !is_jumping) {
-          slide()
-      } if (event.key == "ArrowRight") {
-          punch()
-      }
-  })
-}
-
 function keepScore() {
   score++;
   scoreDisplay.textContent = `Score: ${score}`;
@@ -186,7 +158,7 @@ function lose() {
     highScore = score;
   }
 
-  highscoreDisplay.textContent = `High Score: ${highScore}`;
+  scoreDisplay.textContent = `High Score: ${highScore}`;
 
   clearInterval(scoreTimer);
   clearInterval(carGenTimer);
@@ -195,25 +167,43 @@ function lose() {
   menuButton.style.visibility = "visible";
   restartButton.style.visibility = "visible";
   gameOverText.style.visibility = "visible";
-  highscoreDisplay.style.visibility = "visible";
 }
 
 function startGame() {
   startButton.style.visibility = "hidden";
-  highscoreDisplay.style.visibility = "hidden";
-  scoreDisplay.style.visibility = "visible";
   menuButton.style.visibility = "hidden";
   restartButton.style.visibility = "hidden";
   gameOverText.style.visibility = "hidden";
-  main();
+  score = 0;
+
+  scoreDisplay.textContent = `Score: ${score}`;
+  
+  area.appendChild(player);
+  player.classList.add("player");
+  area.appendChild(cars);
+  collisionTimer = setInterval(collisions, 1); // check for collisions every millisecond
+  carGenTimer = setInterval(generateCar, 3000); // generate a car every 3 seconds
+  scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every second
+
+  // handles all keybinds
+  document.addEventListener("keydown", function(event) {
+      if (event.key == "w" || event.key == "W") {
+          jump()
+      // fast fall code check if the down arrow is being clicked while the player is jumping
+      } if (event.key == "s" && is_jumping || event.key == "S" && is_jumping) {
+          player.style.animationDuration = ".4s"
+      } if (event.key == "s" && !is_jumping || event.key == "S" && !is_jumping) {
+          slide()
+      } if (event.key == "d" || event.key == "D") {
+          punch()
+      }
+  })
 }
 
 function returnToMenu() {
   alert("returning to menu");
 
   startButton.style.visibility = "visible";
-  highscoreDisplay.style.visibility = "visible";
-  scoreDisplay.style.visibility = "hidden";
   menuButton.style.visibility = "hidden";
   restartButton.style.visibility = "hidden";
   gameOverText.style.visibility = "hidden";
