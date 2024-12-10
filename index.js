@@ -49,8 +49,7 @@ const cars = document.createElement("div");
 let startButton = document.getElementById("startButton"); // visible while in main menu, hidden otherwise
 let menuButton = document.getElementById("menuButton"); // visible while in game over screen, hidden otherwise
 let restartButton = document.getElementById("restartButton"); // visible while in game over screen, hidden otherwise
-let scoreDisplay = document.getElementById("scoreDisplay"); // visible while game is running or in game over screen, hidden otherwise
-let highscoreDisplay = document.getElementById("highscoreDisplay"); // visible while in main menu or game over screen, hidden otherwise
+let scoreDisplay = document.getElementById("scoreDisplay"); // always visible
 let gameOverText = document.getElementById("gameOverText"); // visible while in game over screen, hidden otherwise
 
 let score = 0;
@@ -65,7 +64,6 @@ let is_jumping = false
 let counter = 0
 let can_punch = true
 
-scoreDisplay.style.visibility = "hidden";
 menuButton.style.visibility = "hidden";
 restartButton.style.visibility = "hidden";
 gameOverText.style.visibility = "hidden";
@@ -146,16 +144,46 @@ function collisions() {
   } 
 }
 
+function keepScore() {
+  score++;
+  scoreDisplay.textContent = `Score: ${score}`;
+}
 
-function main() {
+startButton.addEventListener("click", startGame);
+menuButton.addEventListener("click", returnToMenu);
+restartButton.addEventListener("click", startGame);
+
+function lose() {
+  if (score > highScore) {
+    highScore = score;
+  }
+
+  scoreDisplay.textContent = `High Score: ${highScore}`;
+
+  clearInterval(scoreTimer);
+  clearInterval(carGenTimer);
+  clearInterval(collisionTimer);
+
+  menuButton.style.visibility = "visible";
+  restartButton.style.visibility = "visible";
+  gameOverText.style.visibility = "visible";
+}
+
+function startGame() {
+  startButton.style.visibility = "hidden";
+  menuButton.style.visibility = "hidden";
+  restartButton.style.visibility = "hidden";
+  gameOverText.style.visibility = "hidden";
+  score = 0;
+
+  scoreDisplay.textContent = `Score: ${score}`;
+  
   area.appendChild(player);
   player.classList.add("player");
   area.appendChild(cars);
   collisionTimer = setInterval(collisions, 1); // check for collisions every millisecond
   carGenTimer = setInterval(generateCar, 3000); // generate a car every 3 seconds
   scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every second
-
-  score = 0;
 
   // handles all keybinds
   document.addEventListener("keydown", function(event) {
@@ -172,48 +200,10 @@ function main() {
   })
 }
 
-function keepScore() {
-  score++;
-  scoreDisplay.textContent = `Score: ${score}`;
-}
-
-startButton.addEventListener("click", startGame);
-menuButton.addEventListener("click", returnToMenu);
-restartButton.addEventListener("click", startGame);
-
-function lose() {
-  if (score > highScore) {
-    highScore = score;
-  }
-
-  highscoreDisplay.textContent = `High Score: ${highScore}`;
-
-  clearInterval(scoreTimer);
-  clearInterval(carGenTimer);
-  clearInterval(collisionTimer);
-
-  menuButton.style.visibility = "visible";
-  restartButton.style.visibility = "visible";
-  gameOverText.style.visibility = "visible";
-  highscoreDisplay.style.visibility = "visible";
-}
-
-function startGame() {
-  startButton.style.visibility = "hidden";
-  highscoreDisplay.style.visibility = "hidden";
-  scoreDisplay.style.visibility = "visible";
-  menuButton.style.visibility = "hidden";
-  restartButton.style.visibility = "hidden";
-  gameOverText.style.visibility = "hidden";
-  main();
-}
-
 function returnToMenu() {
   alert("returning to menu");
 
   startButton.style.visibility = "visible";
-  highscoreDisplay.style.visibility = "visible";
-  scoreDisplay.style.visibility = "hidden";
   menuButton.style.visibility = "hidden";
   restartButton.style.visibility = "hidden";
   gameOverText.style.visibility = "hidden";
