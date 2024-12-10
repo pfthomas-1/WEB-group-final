@@ -105,7 +105,7 @@ function resetPunch(){
 
 function jump() {
   is_jumping = true
-  player.style.animation = "1.5s ease-out jump"
+  player.style.animation = "1s linear jump"
   player.onanimationend = function() {
       player.style.animation = ".5s infinite sprint"
       is_jumping = false
@@ -142,7 +142,7 @@ function collisions() {
   } if (on_car && playerHitbox.y < carsHitbox.right) {
       console.log("bye")
       on_car = false
-      player.style.bottom = "0px";
+      player.style.bottom = "90px";
   } 
 }
 
