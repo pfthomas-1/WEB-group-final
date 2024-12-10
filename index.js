@@ -61,6 +61,7 @@ let is_punching = false
 let on_car = false 
 let is_jumping = false
 let counter = 0
+let can_punch = true
 
 scoreDisplay.style.visibility = "hidden";
 menuButton.style.visibility = "hidden";
@@ -83,18 +84,26 @@ function generateCar () {
 
 
 function punch() {
-  is_punching = true
-  player.style.animation = ".5s linear punch"
-  player.onanimationend = function() {
-      player.style.animation = ".5s infinite sprint"
-      is_punching = false
+  is_punching = false
+  if (can_punch){
+    is_punching = true
+    player.style.animation = ".5s linear punch"
+    can_punch = false
+    setInterval(resetPunch, 5000)
+    player.onanimationend = function() {
+        player.style.animation = ".5s infinite sprint"
+        is_punching = false
+    }
   }
-}
+  }
 
+function resetPunch(){
+  can_punch = true
+}
 
 function jump() {
   is_jumping = true
-  player.style.animation = ".5s ease-out jump"
+  player.style.animation = "1.5s ease-out jump"
   player.onanimationend = function() {
       player.style.animation = ".5s infinite sprint"
       is_jumping = false
