@@ -46,11 +46,26 @@ const area = document.getElementById("myCanvas");
 const player = document.createElement("div")
 const cars = document.createElement("div");
 
+let startButton = document.getElementById("startButton"); // visible while in main menu, hidden otherwise
+let menuButton = document.getElementById("menuButton"); // visible while in game over screen, hidden otherwise
+let restartButton = document.getElementById("restartButton"); // visible while in game over screen, hidden otherwise
+let scoreDisplay = document.getElementById("scoreDisplay"); // visible while game is running or in game over screen, hidden otherwise
+let highscoreDisplay = document.getElementById("highscoreDisplay"); // visible while in main menu or game over screen, hidden otherwise
+let gameOverText = document.getElementById("gameOverText"); // visible while in game over screen, hidden otherwise
+
+let score = 0;
+let highScore = 0;
+let timeID;
+
 let is_punching = false
 let on_car = false 
 let is_jumping = false
 let counter = 0
 
+scoreDisplay.style.visibility = "hidden";
+menuButton.style.visibility = "hidden";
+restartButton.style.visibility = "hidden";
+gameOverText.style.visibility = "hidden";
 
 function generateCar () {
   if (counter % 2 == 0) {
@@ -144,16 +159,7 @@ function main() {
 
 
 
-let startButton = document.getElementById("startButton"); // visible while in main menu, hidden otherwise
-let menuButton = document.getElementById("menuButton"); // visible while in game over screen, hidden otherwise
-let restartButton = document.getElementById("restartButton"); // visible while in game over screen, hidden otherwise
-let scoreDisplay = document.getElementById("scoreDisplay"); // visible while game is running or in game over screen, hidden otherwise
-let highscoreDisplay = document.getElementById("highscoreDisplay"); // visible while in main menu or game over screen, hidden otherwise
-let gameOverText = document.getElementById("gameOverText"); // visible while in game over screen, hidden otherwise
 
-let score = 0;
-let highScore = 0;
-let timeID;
 
 /*
 timeID = window.setInterval(keepScore, 1000);
@@ -167,11 +173,6 @@ function keepScore() {
   }
 }
 */
-
-scoreDisplay.style.visibility = "hidden";
-menuButton.style.visibility = "hidden";
-restartButton.style.visibility = "hidden";
-gameOverText.style.visibility = "hidden";
 
 startButton.addEventListener("click", startGame);
 
