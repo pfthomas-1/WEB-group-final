@@ -5,6 +5,7 @@
     height: 200px;
     bottom: 90px;
     right: 67%;
+    background-color: black;
     animation: .5s infinite sprint;
     z-index: 2;
 }

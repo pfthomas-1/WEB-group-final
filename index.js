@@ -49,7 +49,7 @@ const cars = document.createElement("div");
 let startButton = document.getElementById("startButton"); // visible while in main menu, hidden otherwise
 let menuButton = document.getElementById("menuButton"); // visible while in game over screen, hidden otherwise
 let restartButton = document.getElementById("restartButton"); // visible while in game over screen, hidden otherwise
-let scoreDisplay = document.getElementById("scoreDisplay"); // always visible
+let scoreDisplay = document.getElementById("scoreDisplay"); // visible while game is running or in game over screen, hidden otherwise
 let gameOverText = document.getElementById("gameOverText"); // visible while in game over screen, hidden otherwise
 
 let score = 0;
@@ -58,11 +58,11 @@ let scoreTimer;
 let carGenTimer;
 let collisionTimer;
 
-let is_punching = false
-let on_car = false 
-let is_jumping = false
-let counter = 0
-let can_punch = true
+let is_punching = false;
+let on_car = false;
+let is_jumping = false;
+let counter = 0;
+let can_punch = true;
 
 menuButton.style.visibility = "hidden";
 restartButton.style.visibility = "hidden";
@@ -102,7 +102,7 @@ function punch() {
         is_punching = false
     }
   }
-  }
+}
 
 function resetPunch(){
   can_punch = true
@@ -129,25 +129,25 @@ function slide() {
 function collisions() {
   let playerHitbox = player.getBoundingClientRect()
   let carsHitbox = cars.getBoundingClientRect()
-  console.log(playerHitbox.bottom, carsHitbox.top)
+  console.log(Math.round(playerHitbox.bottom), Math.round(carsHitbox.top))
+  console.log(on_car)
   if (is_punching && playerHitbox.right < carsHitbox.left && (playerHitbox.right + 20) > carsHitbox.left) {
       cars.classList.value = ""
-  
-  } if (Math.round(playerHitbox.bottom) < Math.round(carsHitbox.top)){   
+  } if (Math.abs(Math.round(playerHitbox.bottom) - Math.round(carsHitbox.top)) < 5){   
       console.log("hello")
       is_jumping = false
       on_car = true
-      player.style.bottom = `500px`; // thank you ChatGPT
+      player.style.bottom = `700px`; // thank you ChatGPT
   
-  } else if (!on_car && playerHitbox.bottom > carsHitbox.top && (playerHitbox.right > Math.round(carsHitbox.left) && Math.round(carsHitbox.left) > playerHitbox.left)) {
+  } else {
+    // console.log("bye")
+    on_car = false
+    player.style.bottom = "90px";
+
+  } if (!on_car && playerHitbox.bottom > carsHitbox.top && playerHitbox.right > carsHitbox.left && playerHitbox.left < carsHitbox.left) { //&& playerHitbox.right < carsHitbox.right) {
       // if the player's bottom is under the car's top  and  if the car's left side position is in between the player's left and right sides; did it this way because otherwise when the car passed under the player it would still trigger this
       console.log("you lose");
       lose();
-  
-  } if (on_car && playerHitbox.y < carsHitbox.right) {
-      console.log("bye")
-      on_car = false
-      player.style.bottom = "90px";
   } 
 }
 
@@ -190,14 +190,16 @@ function startGame() {
   carGenTimer = setInterval(generateCar, 3000); // generate a car every 3 seconds
   scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every se0cond
 
+  score = 0;
+
   // handles all keybinds
   document.addEventListener("keydown", function(event) {
       if (event.key == "w" || event.key == "W") {
           jump()
       // fast fall code check if the down arrow is being clicked while the player is jumping
-      } if (event.key == "s" && is_jumping || event.key == "S" && is_jumping) {
+      } if (event.key == "s" || event.key == "S" && is_jumping) {
           player.style.animationDuration = ".4s"
-      } if (event.key == "s" && !is_jumping || event.key == "S" && !is_jumping) {
+      } if (event.key == "s" || event.key == "S" && !is_jumping) {
           slide()
       } if (event.key == "d" || event.key == "D") {
           punch()

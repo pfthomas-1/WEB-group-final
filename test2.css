@@ -1,6 +1,7 @@
 .car2 {
     background-image: url("graphics/car.png");
     background-size: cover;
+    background-color: black;
     position: absolute;
     display: inline-block;
     width: 200px;
