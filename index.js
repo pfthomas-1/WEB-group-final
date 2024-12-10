@@ -159,14 +159,14 @@ function main() {
 
   // handles all keybinds
   document.addEventListener("keydown", function(event) {
-      if (event.key == "ArrowUp") {
+      if (event.key == "w" || event.key == "W") {
           jump()
       // fast fall code check if the down arrow is being clicked while the player is jumping
-      } if (event.key == "ArrowDown" && is_jumping) {
+      } if (event.key == "s" && is_jumping || event.key == "S" && is_jumping) {
           player.style.animationDuration = ".4s"
-      } if (event.key == "ArrowDown" && !is_jumping) {
+      } if (event.key == "s" && !is_jumping || event.key == "S" && !is_jumping) {
           slide()
-      } if (event.key == "ArrowRight") {
+      } if (event.key == "d" || event.key == "D") {
           punch()
       }
   })
