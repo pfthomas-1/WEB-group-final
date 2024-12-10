@@ -55,7 +55,7 @@ let gameOverText = document.getElementById("gameOverText"); // visible while in 
 
 let score = 0;
 let highScore = 0;
-let timeID;
+let scoreTimer;
 let carGenTimer;
 let collisionTimer;
 
@@ -151,9 +151,9 @@ function main() {
   area.appendChild(player);
   player.classList.add("player");
   area.appendChild(cars);
-  collisionTimer = setInterval(collisions, 1);
-  carGenTimer = setInterval(generateCar, 3000);
-  timeID = window.setInterval(keepScore, 1000);
+  collisionTimer = setInterval(collisions, 1); // check for collisions every millisecond
+  carGenTimer = setInterval(generateCar, 3000); // generate a car every 3 seconds
+  scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every second
 
   score = 0;
 
@@ -188,9 +188,10 @@ function lose() {
 
   highscoreDisplay.textContent = `High Score: ${highScore}`;
 
-  clearInterval(timeID);
+  clearInterval(scoreTimer);
   clearInterval(carGenTimer);
   clearInterval(collisionTimer);
+
   menuButton.style.visibility = "visible";
   restartButton.style.visibility = "visible";
   gameOverText.style.visibility = "visible";
