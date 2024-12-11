@@ -43,7 +43,7 @@ Notes
  - [1]: obstacle speed is randomly generate from a range that increases slowly up to a maximum speed as the game continues
 */
 const area = document.getElementById("myCanvas");
-const player = document.createElement("div")
+const player = document.createElement("div");
 const cars = document.createElement("div");
 
 let startButton = document.getElementById("startButton"); // visible while in main menu, hidden otherwise
@@ -128,30 +128,34 @@ function resetPunch(){
 }
 
 function jump() {
-  is_punching = false
   is_jumping = true
+  if(player.style.animation != "death"){
   player.style.animation = "1s linear jump"
   player.onanimationend = function() {
       player.style.animation = ".5s infinite sprint"
       is_jumping = false
-  }
+  }}
 }
 
 
 function slide() {
-  is_punching = false
+  if(player.style.animation != "death"){
   player.style.animation = ".5s ease-out slide"
   player.onanimationend = function() {
       player.style.animation = ".5s infinite sprint"
-  }
+  }}
 }
 
 
 function collisions() {
   let playerHitbox = player.getBoundingClientRect()
+  
   let carsHitbox = cars.getBoundingClientRect()
   if (is_punching && (carsHitbox.left - 20) < playerHitbox.right && carsHitbox.left > playerHitbox.left) {
       cars.classList.value = ""
+      let explosion = new Audio('sounds/deltarune_explosion.mp3')
+      explosion.play()
+      is_punching = false
   } if (Math.abs(Math.round(playerHitbox.bottom) - Math.round(carsHitbox.top)) < 5){   
       console.log("hello")
       is_jumping = false
@@ -177,8 +181,10 @@ function keepScore() {
 
 function lose() {
   document.getElementById("background_music").pause()
+
+  player.style.animation = ""
   player.style.animation = "1s linear death"
-  if (score > highScore) {
+    if (score > highScore) {
     highScore = score;
   }
 
@@ -197,6 +203,9 @@ function lose() {
 }
 
 function startGame() {
+  is_punching = false
+  //document.removeChild(player)
+  // player = document.createElement("div")
   startButton.style.visibility = "hidden";
   menuButton.style.visibility = "hidden";
   restartButton.style.visibility = "hidden";
@@ -220,11 +229,14 @@ function startGame() {
   // handles all keybinds
   document.addEventListener("keydown", function(event) {
       if (event.key == "w" || event.key == "W") {
-          jump()
+        is_punching = false  
+        jump()
       // fast fall code check if the down arrow is being clicked while the player is jumping
       } if (event.key == "s" || event.key == "S" && is_jumping) {
-          player.style.animationDuration = ".4s"
+        is_punching = false  
+        player.style.animationDuration = ".4s"
       } if (event.key == "s" || event.key == "S" && !is_jumping) {
+          is_punching = false
           slide()
       } if (event.key == "d" || event.key == "D") {
           punch()

@@ -59,7 +59,7 @@
     width: 300px;
     height: 130px;
     bottom: 90px;
-    animation: 0.7s linear move;
+    animation: 2s linear move;
     z-index: -1;
 }
 .car7 {
