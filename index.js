@@ -73,9 +73,13 @@ menuButton.addEventListener("click", returnToMenu);
 restartButton.addEventListener("click", startGame);
 
 function generateCar () {
-  let car_chosen = Math.floor(Math.random() * 10)
-  cars.classList.add(['car','car2','car3','car4','car5','car6','car7','car8','car9'][car_chosen]);
-  
+  let car_or_plane = Math.random()
+  if (car_or_plane < 0.3){
+    cars.classList.add('plane')
+  }else{
+    let car_chosen = Math.floor(Math.random() * 13)
+    cars.classList.add(['car','car','car','car','car2','car3','car4','car5','car6','car7','car8','car9','car10','car11'][car_chosen]);
+  }
   cars.onanimationend = function() {
       cars.classList.value = ""
   }

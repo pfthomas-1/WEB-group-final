@@ -1,7 +1,7 @@
 .car2 {
     background-image: url("graphics/car.png");
     background-size: cover;
-    background-color: black;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
     width: 200px;
@@ -12,80 +12,100 @@
 }
 .car3 {
     background-image: url("graphics/car2.png");
-    background-size: cover;
-    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
     width: 200px;
     height: 100px;
     bottom: 90px;
-    animation: 2s linear move;
+    animation: 5s linear move;
     z-index: -1;
 }
 .car4 {
     background-image: url("graphics/car3.png");
-    background-size: cover;
-    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
-    width: 200px;
-    height: 100px;
+    width: 400px;
+    height: 200px;
     bottom: 90px;
-    animation: 2s linear move;
+    animation: 1s linear move;
     z-index: -1;
 }
 .car5 {
     background-image: url("graphics/car4.png");
-    background-size: cover;
-    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
     width: 200px;
     height: 100px;
     bottom: 90px;
-    animation: 2s linear move;
+    animation: 2s linear move_but_evil;
     z-index: -1;
 }
 .car6 {
     background-image: url("graphics/car5.png");
-    background-size: cover;
-    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
-    width: 200px;
-    height: 100px;
+    width: 300px;
+    height: 130px;
     bottom: 90px;
-    animation: 2s linear move;
+    animation: 0.7s linear move;
     z-index: -1;
 }
 .car7 {
     background-image: url("graphics/car6.png");
-    background-size: cover;
-    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
     width: 200px;
     height: 100px;
     bottom: 90px;
-    animation: 2s linear move;
+    animation: 3s linear move;
     z-index: -1;
 }
 .car8 {
     background-image: url("graphics/car7.png");
-    background-size: cover;
-    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
-    width: 200px;
-    height: 100px;
+    width: 50px;
+    height: 20px;
     bottom: 90px;
     animation: 2s linear move;
     z-index: -1;
 }
 .car9 {
     background-image: url("graphics/car8.png");
-    background-size: cover;
-    background-color: black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
+    position: absolute;
+    display: inline-block;
+    width: 360px;
+    height: 156px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
+.car10 {
+    background-image: url("graphics/car9.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
     width: 200px;
@@ -94,15 +114,29 @@
     animation: 2s linear move;
     z-index: -1;
 }
-.car10 {
-    background-image: url("graphics/car9.png");
-    background-size: cover;
-    background-color: black;
+.car11 {
+    background-image: url("graphics/kachow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
     position: absolute;
     display: inline-block;
     width: 200px;
     height: 100px;
     bottom: 90px;
+    animation: 10s linear move;
+    z-index: -1;
+}
+.plane {
+    background-image: url("graphics/plane.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: black; */
+    position: absolute;
+    display: inline-block;
+    width: 600px;
+    height: 100px;
+    bottom: 200px;
     animation: 2s linear move;
     z-index: -1;
 }
