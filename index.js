@@ -116,6 +116,7 @@ function resetPunch(){
 }
 
 function jump() {
+  is_punching = false
   is_jumping = true
   player.style.animation = "1s linear jump"
   player.onanimationend = function() {
@@ -126,6 +127,7 @@ function jump() {
 
 
 function slide() {
+  is_punching = false
   player.style.animation = ".5s ease-out slide"
   player.onanimationend = function() {
       player.style.animation = ".5s infinite sprint"
