@@ -51,12 +51,14 @@ let menuButton = document.getElementById("menuButton"); // visible while in game
 let restartButton = document.getElementById("restartButton"); // visible while in game over screen, hidden otherwise
 let scoreDisplay = document.getElementById("scoreDisplay"); // visible while game is running or in game over screen, hidden otherwise
 let gameOverText = document.getElementById("gameOverText"); // visible while in game over screen, hidden otherwise
+let punchReady = document.getElementById("punchReady"); // visible while game is running and can_punch = true;
 
 let score = 0;
 let highScore = 0;
 let scoreTimer;
 let carGenTimer;
 let collisionTimer;
+let punchTimer;
 
 let genTime = 3000;
 
@@ -69,6 +71,7 @@ let can_punch = true;
 menuButton.style.visibility = "hidden";
 restartButton.style.visibility = "hidden";
 gameOverText.style.visibility = "hidden";
+punchReady.style.visibility = "hidden";
 
 startButton.addEventListener("click", startGame);
 menuButton.addEventListener("click", returnToMenu);
@@ -76,12 +79,14 @@ restartButton.addEventListener("click", startGame);
 
 function generateCar () {
   clearInterval(carGenTimer);
-  let car_or_plane = Math.random()
-  if (car_or_plane < 0.3){
-    cars.classList.add('plane')
-  }else{
-    let car_chosen = Math.floor(Math.random() * 14)
-    cars.classList.add(['car','car','car','car','car2','car3','car4','car5','car6','car7','car8','car9','car10','car11', 'car'][car_chosen]);
+  if (cars.classList.value == "") {
+    let car_or_plane = Math.random()
+    if (car_or_plane < 0.3){
+      cars.classList.add('plane')
+    }else{
+      let car_chosen = Math.floor(Math.random() * 13)
+      cars.classList.add(['car','car','car','car','car2','car3','car4','car5','car6','car7','car8','car9','car10','car11'][car_chosen]);
+    }
   }
   cars.onanimationend = function() {
       cars.classList.value = ""
@@ -103,7 +108,8 @@ function punch() {
     let punch_sound = new Audio("sounds/punch.mp3");
     punch_sound.play()
     can_punch = false
-    setInterval(resetPunch, 5000)
+    punchReady.style.visibility = "hidden";
+    punchTimer = setInterval(resetPunch, 5000);
     player.onanimationend = function() {
         player.style.animation = ".5s infinite sprint"
         is_punching = false
@@ -113,6 +119,8 @@ function punch() {
 
 function resetPunch(){
   can_punch = true
+  punchReady.style.visibility = "visible";
+  clearInterval(punchTimer);
 }
 
 function jump() {
@@ -159,7 +167,7 @@ function collisions() {
       // if the player's bottom is under the car's top  and  if the car's left side position is in between the player's left and right sides; did it this way because otherwise when the car passed under the player it would still trigger this
       console.log("you lose");
       lose();
-  } 
+  }
 }
 
 function keepScore() {
@@ -185,6 +193,7 @@ function lose() {
   menuButton.style.visibility = "visible";
   restartButton.style.visibility = "visible";
   gameOverText.style.visibility = "visible";
+  punchReady.style.visibility = "hidden";
 }
 
 function startGame() {
@@ -195,6 +204,7 @@ function startGame() {
   menuButton.style.visibility = "hidden";
   restartButton.style.visibility = "hidden";
   gameOverText.style.visibility = "hidden";
+  punchReady.style.visibility = "visible";
   score = 0;
   document.getElementById("background_music").play()
   scoreDisplay.textContent = `Score: ${score}`;
