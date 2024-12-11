@@ -104,6 +104,7 @@ function rollTime() {
 
 function punch() {
   if (can_punch){
+    is_punching = true
     player.style.animation = ".5s linear punch"
     let punch_sound = new Audio("sounds/punch.mp3");
     punch_sound.play()
@@ -111,8 +112,11 @@ function punch() {
     punchReady.style.visibility = "hidden";
     punchTimer = setInterval(resetPunch, 5000);
     player.onanimationend = function() {
-        player.style.animation = ".5s infinite sprint"
-        is_punching = false
+      player.style.animation = ".5s infinite sprint"
+      is_punching = false
+    }
+    player.onanimationcancel = function() {
+      is_punching = false
     }
   }
 }
@@ -178,6 +182,8 @@ function lose() {
     highScore = score;
   }
 
+  punchReady.style.visibility = "hidden";
+
   scoreDisplay.textContent = `High Score: ${highScore}`;
 
   clearInterval(scoreTimer);
@@ -187,7 +193,6 @@ function lose() {
   menuButton.style.visibility = "visible";
   restartButton.style.visibility = "visible";
   gameOverText.style.visibility = "visible";
-  punchReady.style.visibility = "hidden";
 }
 
 function startGame() {
@@ -203,6 +208,7 @@ function startGame() {
   area.appendChild(player);
   player.classList.add("player");
   area.appendChild(cars);
+  player.style.animation = ".5s infinite sprint";
   collisionTimer = setInterval(collisions, 1); // check for collisions every millisecond
   generateCar(); // generate a car every interval
   scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every se0cond
@@ -218,8 +224,7 @@ function startGame() {
           player.style.animationDuration = ".4s"
       } if (event.key == "s" || event.key == "S" && !is_jumping) {
           slide()
-      } if (event.key == "d" || event.key == "D") {    
-          is_punching = true
+      } if (event.key == "d" || event.key == "D") {
           punch()
       }
   })
