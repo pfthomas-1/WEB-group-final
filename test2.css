@@ -33,7 +33,7 @@
     width: 400px;
     height: 200px;
     bottom: 90px;
-    animation: 1s linear move;
+    animation: 4s linear move_but_evil2;
     z-index: -1;
 }
 .car5 {
