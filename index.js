@@ -84,10 +84,7 @@ function generateCar () {
 
 
 function punch() {
-  
-  is_punching = false
   if (can_punch){
-    is_punching = true
     player.style.animation = ".5s linear punch"
     let punch_sound = new Audio("sounds/punch.mp3");
     punch_sound.play()
@@ -125,9 +122,7 @@ function slide() {
 function collisions() {
   let playerHitbox = player.getBoundingClientRect()
   let carsHitbox = cars.getBoundingClientRect()
-  console.log(Math.round(playerHitbox.bottom), Math.round(carsHitbox.top))
-  console.log(on_car)
-  if (is_punching && playerHitbox.right < carsHitbox.left && (playerHitbox.right + 20) > carsHitbox.left) {
+  if (is_punching && (carsHitbox.left - 20) < playerHitbox.right && carsHitbox.left > playerHitbox.left) {
       cars.classList.value = ""
   } if (Math.abs(Math.round(playerHitbox.bottom) - Math.round(carsHitbox.top)) < 5){   
       console.log("hello")
@@ -140,7 +135,7 @@ function collisions() {
       on_car = false
       player.style.bottom = "90px";
 
-  } if (!on_car && playerHitbox.bottom > carsHitbox.top && playerHitbox.right > carsHitbox.left && playerHitbox.left < carsHitbox.left) { //&& playerHitbox.right < carsHitbox.right) {
+  } if (!is_punching && !on_car && playerHitbox.bottom > carsHitbox.top && playerHitbox.right > carsHitbox.left && playerHitbox.left < carsHitbox.left) { //&& playerHitbox.right < carsHitbox.right) {
       // if the player's bottom is under the car's top  and  if the car's left side position is in between the player's left and right sides; did it this way because otherwise when the car passed under the player it would still trigger this
       console.log("you lose");
       lose();
@@ -197,7 +192,8 @@ function startGame() {
           player.style.animationDuration = ".4s"
       } if (event.key == "s" || event.key == "S" && !is_jumping) {
           slide()
-      } if (event.key == "d" || event.key == "D") {
+      } if (event.key == "d" || event.key == "D") {    
+          is_punching = true
           punch()
       }
   })
