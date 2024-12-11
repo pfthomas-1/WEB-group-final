@@ -151,27 +151,27 @@ function collisions() {
   let playerHitbox = player.getBoundingClientRect()
   
   let carsHitbox = cars.getBoundingClientRect()
-  if (is_punching && (carsHitbox.left - 20) < playerHitbox.right && carsHitbox.left > playerHitbox.left) {
-      cars.classList.value = ""
-      let explosion = new Audio('sounds/deltarune_explosion.mp3')
-      explosion.play()
-      is_punching = false
-  } if (Math.abs(Math.round(playerHitbox.bottom) - Math.round(carsHitbox.top)) < 5){   
-      console.log("hello")
-      is_jumping = false
-      on_car = true
-      player.style.bottom = `${parseInt(Math.round(carsHitbox.top)) - 20}px`; // thank you ChatGPT
-      
-    } else {
-      // console.log("bye")
-      on_car = false
-      player.style.bottom = "90px";
-
-  } if (!is_punching && !on_car && playerHitbox.bottom > carsHitbox.top && playerHitbox.right > carsHitbox.left && playerHitbox.left < carsHitbox.left) { //&& playerHitbox.right < carsHitbox.right) {
-      // if the player's bottom is under the car's top  and  if the car's left side position is in between the player's left and right sides; did it this way because otherwise when the car passed under the player it would still trigger this
-      console.log("you lose");
-      lose();
+  if (is_punching && (carsHitbox.left + 100) < playerHitbox.right && carsHitbox.left > playerHitbox.left) {
+    cars.classList.value = ""
+    let explosion = new Audio('sounds/deltarune_explosion.mp3')
+    explosion.play()
+    is_punching = false
+  } else if (!is_punching && !on_car && playerHitbox.bottom > carsHitbox.top && playerHitbox.right > carsHitbox.left && playerHitbox.left < carsHitbox.left) { //&& playerHitbox.right < carsHitbox.right) {
+    // if the player's bottom is under the car's top  and  if the car's left side position is in between the player's left and right sides; did it this way because otherwise when the car passed under the player it would still trigger this
+    console.log("you lose");
+    lose();
   }
+  /*
+  if (Math.abs(Math.round(playerHitbox.bottom) - Math.round(carsHitbox.top)) < 5){   
+    console.log("hello")
+    is_jumping = false
+    on_car = true
+    player.style.bottom = `${parseInt(Math.round(carsHitbox.top)) - 20}px`; // thank you ChatGPT  
+  } else {
+    // console.log("bye")
+    on_car = false
+    player.style.bottom = "90px";
+  } */
 }
 
 function keepScore() {
