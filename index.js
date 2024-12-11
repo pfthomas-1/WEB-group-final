@@ -58,6 +58,8 @@ let scoreTimer;
 let carGenTimer;
 let collisionTimer;
 
+let genTime = 3000;
+
 let is_punching = false;
 let on_car = false;
 let is_jumping = false;
@@ -73,6 +75,7 @@ menuButton.addEventListener("click", returnToMenu);
 restartButton.addEventListener("click", startGame);
 
 function generateCar () {
+  clearInterval(carGenTimer);
   let car_or_plane = Math.random()
   if (car_or_plane < 0.3){
     cars.classList.add('plane')
@@ -84,8 +87,15 @@ function generateCar () {
       cars.classList.value = ""
   }
 
+  rollTime();
+
+  carGenTimer = window.setInterval(generateCar, genTime);
 }
 
+function rollTime() {
+  genTime = (Math.random() * (5 - 1.5) + 1.5).toFixed(2);
+  genTime *= 1000;
+}
 
 function punch() {
   if (can_punch){
@@ -182,7 +192,7 @@ function startGame() {
   player.classList.add("player");
   area.appendChild(cars);
   collisionTimer = setInterval(collisions, 1); // check for collisions every millisecond
-  carGenTimer = setInterval(generateCar, 3000); // generate a car every 3 seconds
+  generateCar(); // generate a car every interval
   scoreTimer = window.setInterval(keepScore, 1000); // increment score by 1 every se0cond
 
   score = 0;
