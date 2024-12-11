@@ -10,3 +10,99 @@
     animation: 2s linear move;
     z-index: -1;
 }
+.car3 {
+    background-image: url("graphics/car2.png");
+    background-size: cover;
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
+.car4 {
+    background-image: url("graphics/car3.png");
+    background-size: cover;
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
+.car5 {
+    background-image: url("graphics/car4.png");
+    background-size: cover;
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
+.car6 {
+    background-image: url("graphics/car5.png");
+    background-size: cover;
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
+.car7 {
+    background-image: url("graphics/car6.png");
+    background-size: cover;
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
+.car8 {
+    background-image: url("graphics/car7.png");
+    background-size: cover;
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
+.car9 {
+    background-image: url("graphics/car8.png");
+    background-size: cover;
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
+.car10 {
+    background-image: url("graphics/car9.png");
+    background-size: cover;
+    background-color: black;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    bottom: 90px;
+    animation: 2s linear move;
+    z-index: -1;
+}
