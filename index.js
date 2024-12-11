@@ -122,6 +122,7 @@ function punch() {
 }
 
 function resetPunch(){
+  is_punching = false
   can_punch = true
   punchReady.style.visibility = "visible";
   clearInterval(punchTimer);
