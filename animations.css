@@ -2,6 +2,12 @@
     0% {right: -100%;}
     100% {right: 100%;}
 }
+@keyframes move_but_evil {
+    0% {right: -100%;}
+    20% {right: 20%;}
+    84% {right: -57%;}
+    100% {right: 100%;}
+}
 
 @keyframes jump {
     0% {bottom: 90px; background-image: url("graphics/other hand frames/jump.png"); background-size: cover;}
