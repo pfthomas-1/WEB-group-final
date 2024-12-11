@@ -189,6 +189,7 @@ function lose() {
   clearInterval(scoreTimer);
   clearInterval(carGenTimer);
   clearInterval(collisionTimer);
+  clearInterval(punchTimer);
 
   menuButton.style.visibility = "visible";
   restartButton.style.visibility = "visible";
@@ -201,6 +202,7 @@ function startGame() {
   restartButton.style.visibility = "hidden";
   gameOverText.style.visibility = "hidden";
   punchReady.style.visibility = "visible";
+  can_punch = true;
   score = 0;
   document.getElementById("background_music").play()
   scoreDisplay.textContent = `Score: ${score}`;
